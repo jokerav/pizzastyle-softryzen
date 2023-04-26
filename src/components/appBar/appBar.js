@@ -12,18 +12,8 @@ const pages = ['Pizza', 'Cart'];
 
 function ResponsiveAppBar() {
     const navigate = useNavigate();
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
-
-    const handleOpenNavMenu = (event) => {
-        setAnchorElNav(event.currentTarget);
-    };
-    const handleOpenUserMenu = (event) => {
-        setAnchorElUser(event.currentTarget);
-    };
 
     const handleCloseNavMenu = (e) => {
-        setAnchorElNav(null);
         console.log(e);
         if (e.target.innerText === 'PIZZA'){
             navigate('/pizza')
@@ -32,11 +22,6 @@ function ResponsiveAppBar() {
             navigate('/cart')
         }
     };
-
-    const handleCloseUserMenu = () => {
-        setAnchorElUser(null);
-    };
-
 
     return (
         <AppBar position="static">
