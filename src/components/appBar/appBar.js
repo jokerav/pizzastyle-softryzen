@@ -5,7 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-import AdbIcon from '@mui/icons-material/Adb';
+import LocalPizzaIcon from '@mui/icons-material/LocalPizza';
 import {useNavigate} from "react-router-dom";
 
 const pages = ['Pizza', 'Cart'];
@@ -27,7 +27,7 @@ function ResponsiveAppBar() {
         <AppBar position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <AdbIcon sx={{display: {xs: 'none', md: 'flex'}, mr: 1}}/>
+                    <LocalPizzaIcon style={{height:"50px", marginRight:"25px"}}/>
                     <Typography
                         variant="h6"
                         noWrap
