@@ -24,7 +24,7 @@ function ResponsiveAppBar() {
     };
 
     return (
-        <AppBar position="static">
+        <AppBar position="static" style={{marginBottom: "20px"}}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <LocalPizzaIcon style={{height:"50px", marginRight:"25px"}}/>

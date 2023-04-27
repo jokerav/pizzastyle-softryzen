@@ -1,13 +1,14 @@
 import './App.css';
 import { Route, Routes, Navigate } from "react-router-dom";
 import ResponsiveAppBar from "./components/appBar/appBar";
+import ProductsList from './components/ProductsList'
 
 function App() {
   return (
     <div className="App">
         <ResponsiveAppBar/>
       <Routes>
-          <Route path='/pizza' element={<div>PIZZA page</div>}/>
+          <Route path='/pizza' element={<ProductsList/>}/>
           <Route path='/cart' element={<div>CART page</div>}/>
           <Route path='*' element={<Navigate to='/pizza'/>}/>
       </Routes>
