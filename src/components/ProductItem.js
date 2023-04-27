@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 export default function ProductItem({pizza}) {
     const {id, title, description, price, image} = pizza;
     return (
-        <Card sx={{ maxWidth: 345 }}>
+        <Card sx={{ maxWidth: 345, borderRadius: 6 }}>
             <CardMedia
                 component="img"
                 alt="pizza photo"
