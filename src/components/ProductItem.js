@@ -9,24 +9,27 @@ import Typography from '@mui/material/Typography';
 export default function ProductItem({pizza}) {
     const {id, title, description, price, image} = pizza;
     return (
-        <Card sx={{ maxWidth: 345, borderRadius: 6 }}>
+        <Card sx={{maxWidth: 360, borderRadius: 6}}>
             <CardMedia
                 component="img"
                 alt="pizza photo"
-                height={'auto'}
+                height='400px'
                 image={image}
             />
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
                     {title}
                 </Typography>
-                <Typography variant="body2" color="text.secondary" height='20px'>
+                <Typography variant="body2" color="text.secondary" height='40px'>
                     {description}
+                </Typography>
+                <Typography>
+                    Price {price} ₴
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="large" style={{fontSize:"20px", fontStyle:"bold", lineHeight:"1.0"}}>+</Button>
-                <Button size="large" size="large" style={{fontSize:"20px", fontStyle:"bold", lineHeight:"1.0"}}>-</Button>
+                <Button size="large" style={{fontSize: "20px", fontStyle: "bold", lineHeight: "1.0"}}>+</Button>
+                <Button size="large" style={{fontSize: "20px", fontStyle: "bold", lineHeight: "1.0"}}>-</Button>
             </CardActions>
         </Card>
     );
