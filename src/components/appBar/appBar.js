@@ -7,18 +7,17 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import LocalPizzaIcon from '@mui/icons-material/LocalPizza';
 import {useNavigate} from "react-router-dom";
-
-const pages = ['Pizza', 'Cart'];
+import Badge from '@mui/material/Badge';
 
 function ResponsiveAppBar() {
     const navigate = useNavigate();
 
     const handleCloseNavMenu = (e) => {
         console.log(e);
-        if (e.target.innerText === 'PIZZA'){
+        if (e.target.innerText === 'PIZZA') {
             navigate('/pizza')
         }
-        if (e.target.innerText === 'CART'){
+        if (e.target.innerText === 'CART') {
             navigate('/cart')
         }
     };
@@ -27,7 +26,7 @@ function ResponsiveAppBar() {
         <AppBar position="static" style={{marginBottom: "20px"}}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <LocalPizzaIcon style={{height:"50px", marginRight:"25px"}}/>
+                    <LocalPizzaIcon style={{height: "50px", marginRight: "25px"}}/>
                     <Typography
                         variant="h6"
                         noWrap
@@ -46,15 +45,22 @@ function ResponsiveAppBar() {
                         PizzaStyle
                     </Typography>
                     <Box sx={{flexGrow: 1, display: {xs: 'none', md: 'flex'}}}>
-                        {pages.map((page) => (
+                        {/*{pages.map((page) => (*/}
+                        <Button
+                            onClick={e => handleCloseNavMenu(e)}
+                            sx={{my: 2, color: 'white', display: 'block'}}
+                        >
+                            Pizza
+                        </Button>
                             <Button
-                                key={page}
-                                onClick={e=>handleCloseNavMenu(e)}
-                                sx={{my: 2, color: 'white', display: 'block'}}
-                            >
-                                {page}
+                                onClick={e => handleCloseNavMenu(e)}
+                                sx={{my: 2, color: 'white', display: 'block'}}>
+                                cart
+
                             </Button>
-                        ))}
+                        <Badge badgeContent={5} invisible={false} color='secondary' sx={{marginLeft: 0}} sx={{marginTop:3}}/>
+
+                        {/*))}*/}
                     </Box>
                 </Toolbar>
             </Container>
