@@ -13,8 +13,6 @@ const CartPage = () => {
         const pizza = cart.filter(pizza => pizza.id === id)
         return pizza.length > 0
     }
-    console.log("cartList =>", cartList);
-    console.log(chekсPizzaInCart(2))
     cartList = products.filter(pizza => chekсPizzaInCart(pizza.id))
 
     return (
