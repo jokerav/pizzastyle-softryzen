@@ -8,11 +8,13 @@ const ProductsList = () => {
         <Container>
             <Grid container spacing={3}
                   justifyContent="center"
-                  alignItems="center" >
-                    {products.map(
-                        pizza =>
-                            <Grid key={pizza.id} item xs={'auto'}><ProductItem pizza={pizza}/></Grid>
-                    )}
+                  alignItems="center">
+                {products.map(
+                    pizza =>
+                        <Grid key={pizza.id} item xs={'auto'}>
+                            <ProductItem pizza={pizza}/>
+                        </Grid>
+                )}
 
             </Grid>
         </Container>)
