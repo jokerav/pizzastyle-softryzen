@@ -16,7 +16,6 @@ function ResponsiveAppBar() {
     const navigate = useNavigate();
 
     const handleCloseNavMenu = (e) => {
-        console.log(e);
         if (e.target.innerText === 'PIZZA') {
             navigate('/pizza')
         }

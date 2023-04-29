@@ -4,7 +4,6 @@ import Container from "@mui/material/Container";
 import Grid from "@mui/material/Unstable_Grid2";
 
 const ProductsList = () => {
-    console.log(products)
     return (
         <Container>
             <Grid container spacing={3}
