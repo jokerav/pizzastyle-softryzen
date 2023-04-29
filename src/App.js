@@ -1,6 +1,6 @@
 import './App.css';
 import { Route, Routes, Navigate } from "react-router-dom";
-import ResponsiveAppBar from "./components/appBar/appBar";
+import ResponsiveAppBar from "./components/appBar";
 import ProductsList from './components/ProductsList'
 import CartPage from "./components/CartPage";
 

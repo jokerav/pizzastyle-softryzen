@@ -13,21 +13,21 @@ const CartPage = () => {
         const pizza = cart.filter(pizza => pizza.id === id)
         return pizza.length > 0
     }
+
     const getPizzaQuantity = id => {
         const [pizza] = cart.filter(pizza => pizza.id === id);
         return pizza.quantity
     }
 
     cartList = products.filter(pizza => chekсPizzaInCart(pizza.id))
+
     const calculateTotalPrice = () => {
         let totalPrice = 0;
-        cartList.forEach(pizza => {
-            totalPrice += pizza.price * getPizzaQuantity(pizza.id)
+        cartList.forEach(({id, price}) => {
+            totalPrice += price * getPizzaQuantity(id)
         })
         return totalPrice
-
     }
-
     return (
         <Container>
             {cart.length === 0 ? <Typography>Please, choose pizza <Link sx={{cursor: "pointer"}} underline="hover"

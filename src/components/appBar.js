@@ -9,7 +9,7 @@ import LocalPizzaIcon from '@mui/icons-material/LocalPizza';
 import {useNavigate} from "react-router-dom";
 import Badge from '@mui/material/Badge';
 import {useSelector} from "react-redux";
-import {getCart} from "../../store/selectors";
+import {getCart} from "../store/selectors";
 import {useEffect, useState} from "react";
 
 function ResponsiveAppBar() {
