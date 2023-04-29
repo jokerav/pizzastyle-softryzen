@@ -5,9 +5,18 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import {useDispatch, useSelector} from "react-redux";
+import {addPizzaQuantity, removePizzaQuantity} from "../store/cartSlice";
+import {getCart} from "../store/selectors";
 
 export default function ProductItem({pizza}) {
     const {id, title, description, price, image} = pizza;
+    const dispatch = useDispatch();
+    const cart = useSelector(getCart);
+    console.log(cart);
+    const [cartPizza] = cart.filter(pizza => pizza.id === id);
+    const quantity = cartPizza?.quantity ?? 0
+    console.log("cartPizza =>", quantity);
     return (
         <Card sx={{maxWidth: 360, borderRadius: 6}}>
             <CardMedia
@@ -28,8 +37,8 @@ export default function ProductItem({pizza}) {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="large" style={{fontSize: "20px", fontStyle: "bold", lineHeight: "1.0"}}>+</Button>
-                <Button size="large" style={{fontSize: "20px", fontStyle: "bold", lineHeight: "1.0"}}>-</Button>
+                <Button size="large" style={{fontSize: "20px", fontStyle: "bold", lineHeight: "1.0"}} onClick={()=>dispatch(addPizzaQuantity({id, quantity:quantity+1}))}>+</Button>
+                <Button size="large" style={{fontSize: "20px", fontStyle: "bold", lineHeight: "1.0"}} onClick={()=>dispatch(removePizzaQuantity({id, quantity:quantity-1}))}>-</Button>
             </CardActions>
         </Card>
     );

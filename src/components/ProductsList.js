@@ -1,5 +1,4 @@
 import {products} from '../products';
-import List from '@mui/material/List';
 import ProductItem from "./ProductItem";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Unstable_Grid2";
