@@ -16,7 +16,6 @@ export default function ProductItem({pizza}) {
     console.log(cart);
     const [cartPizza] = cart.filter(pizza => pizza.id === id);
     const quantity = cartPizza?.quantity ?? 0
-    console.log("cartPizza =>", quantity);
     return (
         <Card sx={{maxWidth: 360, borderRadius: 6}}>
             <CardMedia
@@ -37,8 +36,21 @@ export default function ProductItem({pizza}) {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="large" style={{fontSize: "20px", fontStyle: "bold", lineHeight: "1.0"}} onClick={()=>dispatch(addPizzaQuantity({id, quantity:quantity+1}))}>+</Button>
-                <Button size="large" style={{fontSize: "20px", fontStyle: "bold", lineHeight: "1.0"}} onClick={()=>dispatch(removePizzaQuantity({id, quantity:quantity-1}))}>-</Button>
+                {quantity === 0 ? <Button onClick={() => dispatch(addPizzaQuantity({
+                    id,
+                    quantity: quantity + 1
+                }))}>Add to cart</Button>:null}
+                {quantity > 0 ? <Button size="large" style={{fontSize: "20px", fontStyle: "bold", lineHeight: "1.0"}}
+                                        onClick={() => dispatch(addPizzaQuantity({
+                                            id,
+                                            quantity: quantity + 1
+                                        }))}>+</Button> : null}
+                {quantity > 0 ? <Button size="large" style={{fontSize: "20px", fontStyle: "bold", lineHeight: "1.0"}}
+                                        onClick={() => dispatch(removePizzaQuantity({
+                                            id,
+                                            quantity: quantity - 1
+                                        }))}>-</Button> : null}
+                {quantity>0 ? <Typography>{quantity}</Typography> :null}
             </CardActions>
         </Card>
     );

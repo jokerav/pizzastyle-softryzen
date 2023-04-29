@@ -8,6 +8,9 @@ import Button from '@mui/material/Button';
 import LocalPizzaIcon from '@mui/icons-material/LocalPizza';
 import {useNavigate} from "react-router-dom";
 import Badge from '@mui/material/Badge';
+import {useSelector} from "react-redux";
+import {getCart} from "../../store/selectors";
+import {useEffect, useState} from "react";
 
 function ResponsiveAppBar() {
     const navigate = useNavigate();
@@ -21,8 +24,14 @@ function ResponsiveAppBar() {
             navigate('/cart')
         }
     };
-
+    let cart = useSelector(getCart)
+    console.log(cart)
+    let [visibleQuantityPizza, setVisibleQuantityPizza] = useState(cart.length);
+    useEffect(()=>{
+        setVisibleQuantityPizza((cart.length))
+    },[cart])
     return (
+
         <AppBar position="static" style={{marginBottom: "20px"}}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
@@ -58,7 +67,7 @@ function ResponsiveAppBar() {
                                 cart
 
                             </Button>
-                        <Badge badgeContent={5} invisible={false} color='secondary' sx={{marginLeft: 0}} sx={{marginTop:3}}/>
+                        <Badge badgeContent={visibleQuantityPizza} color='secondary' sx={{marginLeft: 0, marginTop : 3} }/>
 
                         {/*))}*/}
                     </Box>
