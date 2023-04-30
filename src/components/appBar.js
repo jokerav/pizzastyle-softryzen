@@ -72,8 +72,8 @@ function ResponsiveAppBar() {
                         >
                             cart
                         </Button>
-                        <Badge badgeContent={visibleQuantityPizza} sx={{color: '#fff'}}
-                               sx={{marginLeft: 0, marginTop: 3}}/>
+                        <Badge badgeContent={visibleQuantityPizza}
+                               sx={{marginLeft: 0, marginTop: 3, color: '#fff'}}/>
                     </Box>
                 </Toolbar>
             </Container>
