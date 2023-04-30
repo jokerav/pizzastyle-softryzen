@@ -53,7 +53,6 @@ function ResponsiveAppBar() {
                         PizzaStyle
                     </Typography>
                     <Box sx={{flexGrow: 1, display: {xs: 'none', md: 'flex'}}}>
-                        {/*{pages.map((page) => (*/}
                         <Button
                             onClick={e => handleCloseNavMenu(e)}
                             sx={{my: 2, color: 'white', display: 'block'}}
@@ -67,8 +66,6 @@ function ResponsiveAppBar() {
 
                             </Button>
                         <Badge badgeContent={visibleQuantityPizza} color='secondary' sx={{marginLeft: 0, marginTop : 3} }/>
-
-                        {/*))}*/}
                     </Box>
                 </Toolbar>
             </Container>
