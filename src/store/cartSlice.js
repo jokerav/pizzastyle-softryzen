@@ -26,7 +26,6 @@ const cartSlice = createSlice({
         makeOrder(state){
             state.length = 0
         },
-
     },
 })
 export const {addPizzaQuantity, removePizzaQuantity, makeOrder} = cartSlice.actions;
