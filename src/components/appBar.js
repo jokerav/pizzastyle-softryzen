@@ -23,11 +23,14 @@ function ResponsiveAppBar() {
             navigate('/cart')
         }
     };
-    let cart = useSelector(getCart)
-    let [visibleQuantityPizza, setVisibleQuantityPizza] = useState(cart.length);
-    useEffect(()=>{
-        setVisibleQuantityPizza((cart.length))
-    },[cart])
+    let cart = useSelector(getCart);
+    const calculatePizzaQuantity = () => {
+        let quantity = 0;
+        cart.forEach(pizza => quantity += pizza.quantity);
+        return quantity
+    }
+    let [visibleQuantityPizza, setVisibleQuantityPizza] = useState(calculatePizzaQuantity());
+    useEffect(() =>setVisibleQuantityPizza((calculatePizzaQuantity())),[cart]);
     return (
 
         <AppBar position="static" style={{marginBottom: "20px"}}>
@@ -58,13 +61,14 @@ function ResponsiveAppBar() {
                         >
                             Pizza
                         </Button>
-                            <Button
-                                onClick={e => handleCloseNavMenu(e)}
-                                sx={{my: 2, color: 'white', display: 'block'}}>
-                                cart
+                        <Button
+                            onClick={e => handleCloseNavMenu(e)}
+                            sx={{my: 2, color: 'white', display: 'block'}}>
+                            cart
 
-                            </Button>
-                        <Badge badgeContent={visibleQuantityPizza} color='secondary' sx={{marginLeft: 0, marginTop : 3} }/>
+                        </Button>
+                        <Badge badgeContent={visibleQuantityPizza} color='secondary'
+                               sx={{marginLeft: 0, marginTop: 3}}/>
                     </Box>
                 </Toolbar>
             </Container>
