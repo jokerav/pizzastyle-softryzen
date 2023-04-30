@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import LocalPizzaIcon from '@mui/icons-material/LocalPizza';
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import Badge from '@mui/material/Badge';
 import {useSelector} from "react-redux";
 import {getCart} from "../store/selectors";
@@ -14,7 +14,7 @@ import {useEffect, useState} from "react";
 
 function ResponsiveAppBar() {
     const navigate = useNavigate();
-
+    const location = useLocation();
     const handleCloseNavMenu = (e) => {
         if (e.target.innerText === 'PIZZA') {
             navigate('/pizza')
@@ -30,9 +30,10 @@ function ResponsiveAppBar() {
         return quantity;
     }
     let [visibleQuantityPizza, setVisibleQuantityPizza] = useState(calculatePizzaQuantity());
-    useEffect(() =>setVisibleQuantityPizza((calculatePizzaQuantity())),[cart]);
-    return (
 
+    useEffect(() =>setVisibleQuantityPizza((calculatePizzaQuantity())),[cart]);
+
+    return (
         <AppBar position="static" style={{marginBottom: "20px"}}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
@@ -58,16 +59,20 @@ function ResponsiveAppBar() {
                         <Button
                             onClick={e => handleCloseNavMenu(e)}
                             sx={{my: 2, color: 'white', display: 'block'}}
+                            variant={location.pathname === "/pizza" ? "contained" : null}
+                            color={location.pathname === "/pizza" ? "secondary" : 'primary'}
                         >
                             Pizza
                         </Button>
                         <Button
                             onClick={e => handleCloseNavMenu(e)}
-                            sx={{my: 2, color: 'white', display: 'block'}}>
+                            sx={{my: 2, color: 'white', display: 'block'}}
+                            variant={location.pathname === "/cart" ? "contained" : null}
+                            color={location.pathname === "/cart" ? "secondary" : 'primary'}
+                        >
                             cart
-
                         </Button>
-                        <Badge badgeContent={visibleQuantityPizza} color='secondary'
+                        <Badge badgeContent={visibleQuantityPizza} sx={{color: '#fff'}}
                                sx={{marginLeft: 0, marginTop: 3}}/>
                     </Box>
                 </Toolbar>
