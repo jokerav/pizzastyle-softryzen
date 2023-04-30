@@ -27,7 +27,7 @@ function ResponsiveAppBar() {
     const calculatePizzaQuantity = () => {
         let quantity = 0;
         cart.forEach(pizza => quantity += pizza.quantity);
-        return quantity
+        return quantity;
     }
     let [visibleQuantityPizza, setVisibleQuantityPizza] = useState(calculatePizzaQuantity());
     useEffect(() =>setVisibleQuantityPizza((calculatePizzaQuantity())),[cart]);
