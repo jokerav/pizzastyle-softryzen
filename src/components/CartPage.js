@@ -1,13 +1,16 @@
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {getCart} from "../store/selectors";
-import {Container, Link, Grid, Typography} from "@mui/material";
+import {Container, Link, Grid, Typography, Button} from "@mui/material";
 import {useNavigate} from "react-router-dom";
 import {products} from "../products";
 import ProductItem from "./ProductItem";
+import {makeOrder} from '../store/cartSlice'
 
 const CartPage = () => {
     const cart = useSelector(getCart);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
     let cartList = [];
     const chekсPizzaInCart = id => {
         const pizza = cart.filter(pizza => pizza.id === id)
@@ -34,7 +37,7 @@ const CartPage = () => {
                                                                         onClick={() => navigate('/pizza')}>here</Link></Typography> : null}
             {cart.length > 0 ?
                 <>
-                    <Grid container spacing={3}
+                    <Grid container spacing={3} sx={{marginBottom: "80px"}}
                           justifyContent="center"
                           alignItems="center">
                         {cartList.map((pizza) => <Grid item key={pizza.id}>
@@ -42,7 +45,8 @@ const CartPage = () => {
                             </Grid>
                         )}
                     </Grid>
-                    <Typography>{calculateTotalPrice()}</Typography>
+                    <Typography paragraph variant='h4'> Total: {calculateTotalPrice()} UAH</Typography>
+                    <Button onClick={()=>dispatch(makeOrder())}>Make an order</Button>
                 </>
                 : null}
 

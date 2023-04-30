@@ -24,7 +24,7 @@ function ResponsiveAppBar() {
         }
     };
     let cart = useSelector(getCart)
-    console.log(cart)
+    // console.log(cart)
     let [visibleQuantityPizza, setVisibleQuantityPizza] = useState(cart.length);
     useEffect(()=>{
         setVisibleQuantityPizza((cart.length))

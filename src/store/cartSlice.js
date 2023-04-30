@@ -1,31 +1,33 @@
 import {createSlice} from "@reduxjs/toolkit";
 
-const initialState = []
-
 const cartSlice = createSlice({
     name: "cart",
-    initialState,
+    initialState: [],
     reducers: {
         addPizzaQuantity(state, {payload}) {
             const {id, quantity} = payload;
             const index = state.findIndex(pizza => pizza.id === id);
-            if (index === -1){
-                state.push({id,quantity})
+            if (index === -1) {
+                state.push({id, quantity})
             } else
-            state[index].quantity = quantity;
+                state[index].quantity = quantity;
         },
-        removePizzaQuantity(state, {payload}){
+        removePizzaQuantity(state, {payload}) {
             const {id, quantity} = payload;
             const index = state.findIndex(pizza => pizza.id === id);
-            if (index === -1){
+            if (index === -1) {
                 return
             }
             state[index].quantity = quantity;
-            if (quantity === 0){
+            if (quantity === 0) {
                 state.splice(index, 1)
             }
-        }
+        },
+        makeOrder(state){
+            state.length = 0
+        },
+
     },
 })
-export const {addPizzaQuantity, removePizzaQuantity} = cartSlice.actions;
+export const {addPizzaQuantity, removePizzaQuantity, makeOrder} = cartSlice.actions;
 export default cartSlice.reducer;
